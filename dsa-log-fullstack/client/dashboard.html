@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/styles.css"><title>Dashboard - DSA Log</title></head><body>
+<a class="skip" href="#main">Skip to content</a><header class="top"><a class="brand" href="index.html">DSA Log</a><nav aria-label="Main"><a href="index.html" >Home</a><a href="dashboard.html" aria-current="page">Dashboard</a><span id="authlink"></span></nav></header>
+<main id="main"><h1>Dashboard</h1>
+  <section class="stats" aria-label="Overall progress" aria-live="polite">
+    <div class="stat"><strong id="s-solved">-</strong><span>problems solved</span></div>
+    <div class="stat"><strong id="s-pct">-</strong><span>overall</span></div>
+    <div class="stat"><strong id="s-topics">-</strong><span>topics finished</span></div>
+  </section>
+  <form class="inline" id="add-topic"><div class="grow"><label for="new-title" class="sr">New topic</label><input id="new-title" placeholder="Add a topic, e.g. Graphs" required maxlength="100"></div><button class="btn" type="submit">Add topic</button></form>
+  <div class="controls">
+    <div class="search"><label for="search">Search topics</label><input id="search" type="search" placeholder="e.g. arrays"></div>
+    <div class="chips" role="group" aria-label="Filter by status">
+      <button class="chip" data-f="all" aria-pressed="true">All</button>
+      <button class="chip" data-f="todo" aria-pressed="false">Not started</button>
+      <button class="chip" data-f="doing" aria-pressed="false">In progress</button>
+      <button class="chip" data-f="done" aria-pressed="false">Done</button>
+    </div>
+  </div>
+  <p id="loading" class="loading" role="status">Loading your topics...</p>
+  <div id="error" class="msg error" role="alert" hidden><span id="error-text"></span> <button class="btn small" id="retry" type="button">Try again</button></div>
+  <ul class="grid" id="grid"></ul>
+  <p id="empty" hidden>No topics match. Clear the search, pick a different filter, or add a topic.</p>
+</main>
+<script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/dashboard.js"></script></body></html>

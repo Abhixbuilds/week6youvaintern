@@ -1,0 +1,24 @@
+Week 6 verification log
+Generated: 2026-10-02T08:55:59Z  Node v22.22.2
+
+$ npm run check
+32/32 files passed the syntax check
+exit code: 0
+
+$ node --test tests/unit.test.js tests/frontend-api.test.js tests/static-structure.test.js tests/logger.test.js tests/config.test.js   (dotenv stubbed: no network in the preparation environment)
+# tests 25
+# suites 0
+# pass 25
+# fail 0
+# cancelled 0
+# skipped 0
+
+$ node scripts/smoke-test.js http://localhost:3999   (against a throw-away fake API, to check the script logic only)
+17/17 checks passed (script logic verified; NOT a test of the real application)
+
+NOT executed in the preparation environment (packages could not be installed: no access to the npm registry):
+ - tests/api.test.js, tests/static.test.js, tests/deploy.test.js  (need express, supertest, better-sqlite3)
+ - scripts/backup.js (needs better-sqlite3)
+ - Docker build; live deployment; live smoke test; UAT
+Run these on your own computer / in GitHub Actions and replace this note with the real output:
+   cd server && npm ci && npm run check && npm test

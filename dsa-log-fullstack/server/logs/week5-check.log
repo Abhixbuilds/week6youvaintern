@@ -1,0 +1,36 @@
+Week 5 verification log
+
+Command:
+npm run check
+
+Result:
+PASS
+
+All application JavaScript files, test files, and scripts passed Node.js syntax validation.
+
+Command:
+node --test tests/unit.test.js tests/frontend-api.test.js
+
+Result:
+PASS
+8 tests passed, 0 failed.
+
+Command:
+npm test
+
+Initial result:
+FAIL before test execution because the supplied working environment did not contain a usable supertest installation.
+
+Error:
+Error: Cannot find module 'supertest'
+Require stack:
+- tests/api.test.js
+- tests/static.test.js
+
+Interpretation:
+This is a dependency/setup issue. The source tests could not start because npm dependencies were incomplete in the verification environment.
+
+Attempted remediation:
+npm ci / npm install
+
+The environment could not resolve registry.npmjs.org, so a fresh dependency installation could not be completed here. The project package.json and package-lock.json are retained so the full suite can be installed and executed normally in an environment with npm registry access.

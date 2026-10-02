@@ -1,0 +1,29 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/styles.css"><title>Topic - DSA Log</title></head><body>
+<a class="skip" href="#main">Skip to content</a><header class="top"><a class="brand" href="index.html">DSA Log</a><nav aria-label="Main"><a href="index.html" >Home</a><a href="dashboard.html" >Dashboard</a><span id="authlink"></span></nav></header>
+<main id="main">
+  <p id="loading" class="loading" role="status">Loading topic...</p>
+  <div id="error" class="msg error" role="alert" hidden><span id="error-text"></span> <button class="btn small" id="retry" type="button">Try again</button> <a href="dashboard.html">Back to dashboard</a></div>
+  <div id="content" hidden>
+    <a class="crumb" href="dashboard.html">Back to dashboard</a>
+    <h1 id="title"></h1><p class="lead" id="desc"></p>
+    <div class="bar" id="bar" role="progressbar" aria-label="Topic progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+    <p class="status" id="count" aria-live="polite"></p>
+    <div class="chips" role="group" aria-label="Filter by difficulty">
+      <button class="chip" data-l="all" aria-pressed="true">All</button>
+      <button class="chip" data-l="Easy" aria-pressed="false">Easy</button>
+      <button class="chip" data-l="Medium" aria-pressed="false">Medium</button>
+      <button class="chip" data-l="Hard" aria-pressed="false">Hard</button>
+    </div>
+    <ul class="plist" id="plist"></ul>
+    <form class="inline" id="add-problem">
+      <div class="grow"><label for="p-name" class="sr">Problem name</label><input id="p-name" placeholder="Add a problem" required maxlength="150"></div>
+      <div><label for="p-level" class="sr">Difficulty</label><select id="p-level"><option>Easy</option><option>Medium</option><option>Hard</option></select></div>
+      <button class="btn" type="submit">Add problem</button>
+    </form>
+    <section class="notes"><h2>Notes</h2><label for="note" class="status">What tripped you up in this topic?</label>
+      <textarea id="note" maxlength="5000"></textarea><p class="status" id="status" aria-live="polite"></p></section>
+    <nav class="pager" id="pager" aria-label="Topic navigation"></nav>
+    <div class="danger-zone"><button class="btn danger small" id="delete-topic" type="button">Delete this topic</button></div>
+  </div>
+</main>
+<script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/topic.js"></script></body></html>

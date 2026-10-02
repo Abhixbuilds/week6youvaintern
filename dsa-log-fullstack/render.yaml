@@ -1,0 +1,28 @@
+# Render Blueprint (optional). Dashboard steps in docs/DEPLOYMENT_GUIDE.md work without this file.
+# The repository root is this folder (it contains client/ and server/); the server serves ../client.
+services:
+  - type: web
+    name: dsa-log
+    runtime: node
+    plan: free
+    buildCommand: cd server && npm ci --omit=dev
+    startCommand: cd server && npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION        # better-sqlite3 13 needs Node 22 or newer
+        value: 22
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET          # Render generates a random value; it is never stored in the repository
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 1h
+      - key: DB_PATH
+        value: ./data/dsa-log.db
+    # Free plans have an EPHEMERAL file system: the SQLite file is reset on every deploy/restart.
+    # For data that survives, use a paid plan with a persistent disk: uncomment the lines below
+    # and change DB_PATH to /var/data/dsa-log.db
+    # disk:
+    #   name: dsa-data
+    #   mountPath: /var/data
+    #   sizeGB: 1

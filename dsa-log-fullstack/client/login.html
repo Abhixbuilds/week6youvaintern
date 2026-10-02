@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/styles.css"><title>Sign in - DSA Log</title></head><body>
+<a class="skip" href="#main">Skip to content</a><header class="top"><a class="brand" href="index.html">DSA Log</a><nav aria-label="Main"><a href="index.html" >Home</a><a href="dashboard.html" >Dashboard</a><span id="authlink"></span></nav></header>
+<main id="main"><div class="auth panel">
+  <div class="chips" role="group" aria-label="Choose action">
+    <button type="button" class="chip" data-mode="login" aria-pressed="true">Log in</button>
+    <button type="button" class="chip" data-mode="register" aria-pressed="false">Create account</button>
+  </div>
+  <h1 id="form-title">Log in</h1>
+  <p id="notice" class="msg info" role="status" hidden></p>
+  <div id="error" class="msg error" role="alert" hidden></div>
+  <form id="auth-form" novalidate>
+    <div class="field" id="name-field" hidden><label for="name">Name</label><input id="name" type="text" autocomplete="name" minlength="2" maxlength="50"></div>
+    <div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="email" required></div>
+    <div class="field"><label for="password">Password</label><input id="password" type="password" required maxlength="72">
+      <small id="hint" hidden>Use at least 8 characters, with a letter and a number.</small></div>
+    <button class="btn" id="submit" type="submit">Log in</button>
+  </form>
+</div></main>
+<script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/login.js"></script></body></html>
